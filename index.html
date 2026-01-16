@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>AI Image Creator</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #111827;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .box {
+      background: #020617;
+      padding: 20px;
+      border-radius: 16px;
+      width: 90%;
+      max-width: 500px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+    }
+    h1 {
+      text-align: center;
+    }
+    textarea {
+      width: 100%;
+      height: 100px;
+      border-radius: 10px;
+      border: none;
+      padding: 10px;
+      font-size: 16px;
+      margin-top: 10px;
+    }
+    button {
+      width: 100%;
+      margin-top: 12px;
+      padding: 12px;
+      font-size: 16px;
+      font-weight: bold;
+      border: none;
+      border-radius: 10px;
+      background: #22c55e;
+      cursor: pointer;
+    }
+    img {
+      width: 100%;
+      margin-top: 15px;
+      border-radius: 12px;
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <h1>AI Photo Creator</h1>
+    <textarea id="prompt" placeholder="Describe any image you want..."></textarea>
+    <button onclick="makeImage()">Generate Image</button>
+    <div id="result"></div>
+  </div>
+
+  <script>
+    function makeImage() {
+      const prompt = document.getElementById("prompt").value;
+      const result = document.getElementById("result");
+      result.innerHTML = "Generating...";
+      const img = document.createElement("img");
+      img.src = "https://image.pollinations.ai/prompt/" + encodeURIComponent(prompt);
+      img.onload = () => {
+        result.innerHTML = "";
+        result.appendChild(img);
+      };
+    }
+  </script>
+</body>
+</html>
